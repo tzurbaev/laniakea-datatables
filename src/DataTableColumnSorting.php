@@ -9,8 +9,10 @@ use Laniakea\DataTables\Interfaces\DataTableColumnSortingInterface;
 
 readonly class DataTableColumnSorting implements DataTableColumnSortingInterface
 {
-    public function __construct(private string $column, private DataTableSortingType $type = DataTableSortingType::ALPHABETICAL)
-    {
+    public function __construct(
+        private string $column,
+        private DataTableSortingType $type = DataTableSortingType::ALPHABETICAL,
+    ) {
         //
     }
 

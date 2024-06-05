@@ -32,24 +32,15 @@ class LaniakeaDataTablesServiceProvider extends ServiceProvider
 
     protected function registerDataTables(): void
     {
-        $this->bindPackageAbstractions([
-            DataTablesManagerInterface::class => DataTablesManager::class,
-        ]);
+        $this->app->bind(DataTablesManagerInterface::class, function () {
+            return $this->app->make(
+                $this->getConfig()->get('laniakea-datatables.manager', DataTablesManager::class),
+            );
+        });
     }
 
     protected function getConfig(): Repository
     {
         return $this->app->make('config');
-    }
-
-    protected function bindPackageAbstractions(array $bindings): void
-    {
-        foreach ($bindings as $abstract => $concrete) {
-            $this->app->bind($abstract, function () use ($abstract, $concrete) {
-                return $this->app->make(
-                    $this->getConfig()->get('laniakea-datatables.bindings.'.$abstract, $concrete),
-                );
-            });
-        }
     }
 }
