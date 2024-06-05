@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace Laniakea\Tests\Workbench\DataTables;
 
-use Laniakea\DataTables\Interfaces\HasDataTableDefaultSortingInterface;
+use Laniakea\DataTables\Interfaces\HasDefaultDataTableSortingInterface;
 
-class ArticlesDataTableWithDataTableDefaultSorting extends ArticlesDataTable implements HasDataTableDefaultSortingInterface
+class ArticlesDataTableWithDefaultDataTableSorting extends ArticlesDataTable implements HasDefaultDataTableSortingInterface
 {
     public function getDefaultDataTableSortingColumn(): string
     {

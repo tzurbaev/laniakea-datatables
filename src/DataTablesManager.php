@@ -11,7 +11,7 @@ use Laniakea\DataTables\Interfaces\DataTableFilterInterface;
 use Laniakea\DataTables\Interfaces\DataTableInterface;
 use Laniakea\DataTables\Interfaces\DataTablesManagerInterface;
 use Laniakea\DataTables\Interfaces\DataTableViewInterface;
-use Laniakea\DataTables\Interfaces\HasDataTableDefaultSortingInterface;
+use Laniakea\DataTables\Interfaces\HasDefaultDataTableSortingInterface;
 use Laniakea\DataTables\Interfaces\WithoutPaginationInterface;
 
 class DataTablesManager implements DataTablesManagerInterface
@@ -86,7 +86,7 @@ class DataTablesManager implements DataTablesManagerInterface
 
     protected function getDefaultSorting(DataTableInterface $dataTable): ?array
     {
-        if (!($dataTable instanceof HasDataTableDefaultSortingInterface)) {
+        if (!($dataTable instanceof HasDefaultDataTableSortingInterface)) {
             return null;
         }
 

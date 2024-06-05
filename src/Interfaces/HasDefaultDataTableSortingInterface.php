@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Laniakea\DataTables\Interfaces;
 
-interface HasDataTableDefaultSortingInterface
+interface HasDefaultDataTableSortingInterface
 {
     /**
      * Get the default datatable sorting column.

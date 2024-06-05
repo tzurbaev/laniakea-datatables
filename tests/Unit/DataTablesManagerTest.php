@@ -5,7 +5,7 @@ declare(strict_types=1);
 use Illuminate\Http\Request;
 use Laniakea\DataTables\Interfaces\DataTablesManagerInterface;
 use Laniakea\Tests\Workbench\DataTables\ArticlesDataTable;
-use Laniakea\Tests\Workbench\DataTables\ArticlesDataTableWithDataTableDefaultSorting;
+use Laniakea\Tests\Workbench\DataTables\ArticlesDataTableWithDefaultDataTableSorting;
 use Laniakea\Tests\Workbench\DataTables\ArticlesDataTableWithoutPagination;
 
 it('should include table ID', function () {
@@ -104,7 +104,7 @@ it('should generate current datatable sorting', function (array $query, ?array $
 it('should generate current datatable sorting and fallback to default sorting', function (array $query, array $expected) {
     /** @var DataTablesManagerInterface $manager */
     $manager = app(DataTablesManagerInterface::class);
-    $data = $manager->getDataTableData(new Request($query), new ArticlesDataTableWithDataTableDefaultSorting());
+    $data = $manager->getDataTableData(new Request($query), new ArticlesDataTableWithDefaultDataTableSorting());
 
     expect($data['sorting'])->toBe($expected);
 })->with([
