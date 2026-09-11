@@ -127,17 +127,17 @@ it('should generate current pagination', function (array $query, array $expected
     ['query' => ['filter' => 'value'], 'expected' => ['enabled' => true, 'page' => 1, 'count' => 15]],
 ]);
 
-it('should should not generate pagination for datatables without pagination', function (array $query) {
+it('should not generate pagination for datatables without pagination', function (array $query) {
     /** @var DataTablesManagerInterface $manager */
     $manager = app(DataTablesManagerInterface::class);
     $data = $manager->getDataTableData(new Request($query), new ArticlesDataTableWithoutPagination());
 
     expect($data['pagination'])->toBe(['enabled' => false, 'page' => null, 'count' => null]);
 })->with([
-    ['query' => ['page' => 3], 'expected' => ['enabled' => true, 'page' => 3, 'count' => 15]],
-    ['query' => ['page' => 5, 'count' => 50], 'expected' => ['enabled' => true, 'page' => 5, 'count' => 50]],
-    ['query' => ['count' => 50], 'expected' => ['enabled' => true, 'page' => 1, 'count' => 50]],
-    ['query' => ['filter' => 'value'], 'expected' => ['enabled' => true, 'page' => 1, 'count' => 15]],
+    ['query' => ['page' => 3]],
+    ['query' => ['page' => 5, 'count' => 50]],
+    ['query' => ['count' => 50]],
+    ['query' => ['filter' => 'value']],
 ]);
 
 it('should generate datatable views', function () {
